@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HotProject
+namespace HotUnity
 {
     public class HotScriptManager
     {

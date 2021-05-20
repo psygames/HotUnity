@@ -50,7 +50,7 @@ namespace HotUnity
 
         void InvokeMethod(string name)
         {
-            ILRuntimeInit.Invoke("HotProject.HotScriptManager", name, this);
+            ILRuntimeInit.Invoke("HotUnity.HotScriptManager", name, this);
         }
     }
 }

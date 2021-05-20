@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace HotProject
+namespace HotUnity
 {
     public class HotScript
     {

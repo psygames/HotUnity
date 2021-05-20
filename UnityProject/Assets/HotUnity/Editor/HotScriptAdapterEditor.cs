@@ -126,7 +126,7 @@ namespace HotUnity
                 info.componentValue = (Component)EditorGUILayout.ObjectField(title, info.componentValue, type);
             }
             else if (type.IsClass &&
-                hotAssembly.GetType("HotProject.HotScript").
+                hotAssembly.GetType("HotUnity.HotScript").
                 ReflectionType.IsAssignableFrom(type))
             {
                 info.componentValue = (Component)EditorGUILayout.ObjectField(title, info.componentValue, typeof(HotScriptAdapter));
