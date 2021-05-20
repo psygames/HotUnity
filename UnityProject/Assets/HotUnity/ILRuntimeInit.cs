@@ -95,6 +95,7 @@ public class ILRuntimeInit : MonoBehaviour
     void OnHotFixLoaded()
     {
         isInitialized = true;
+        Invoke("HotProject.Main", "Start");
     }
 
     private void OnDestroy()
