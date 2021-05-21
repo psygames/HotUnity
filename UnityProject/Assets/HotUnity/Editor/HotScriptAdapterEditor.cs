@@ -1,25 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using UnityEditor;
 using UnityEditor.Experimental.SceneManagement;
 using UnityEngine;
 
-namespace HotUnity
+namespace HotUnity.Editor
 {
     [CustomEditor(typeof(HotScriptAdapter))]
-    public class HotScriptAdapterEditor : Editor
+    public class HotScriptAdapterEditor : UnityEditor.Editor
     {
-        public ILRuntime.Runtime.Enviorment.AppDomain hotAssembly => assemblyLoader.appdomain;
+        private ILRuntime.Runtime.Enviorment.AppDomain hotAssembly => assemblyLoader.appdomain;
         private HotAssemblyLoader assemblyLoader;
+        private new HotScriptAdapter target => serializedObject.targetObject as HotScriptAdapter;
 
         private void OnEnable()
         {
-            if (assemblyLoader == null)
-                assemblyLoader = new HotAssemblyLoader();
+            assemblyLoader = assemblyLoader ?? new HotAssemblyLoader();
             assemblyLoader.Reloead();
         }
 
@@ -30,24 +28,32 @@ namespace HotUnity
 
         protected override void OnHeaderGUI()
         {
-            Debug.LogError("OnHeaderGUI");
+            var rect = EditorGUILayout.GetControlRect(false, 0f);
+            rect.height = EditorGUIUtility.singleLineHeight;
+            rect.y -= rect.height;
+
+            // icon
+            rect.x = 16;
+            rect.xMax = 32;
+            EditorGUI.DrawRect(rect, Helper.backgroudColor);
+            GUI.DrawTexture(rect, Helper.scriptIcon);
+
+            // title
+            rect.x = 48;
+            rect.xMax = EditorGUIUtility.currentViewWidth - 96;
+            EditorGUI.DrawRect(rect, Helper.backgroudColor);
+            var className = target.targetClass;
+            if (className.LastIndexOf('.') != -1)
+            {
+                className = className.Substring(className.LastIndexOf('.') + 1);
+            }
+            string header = $"{className} (HotScript)";
+            EditorGUI.LabelField(rect, header, EditorStyles.boldLabel);
         }
 
         public override void OnInspectorGUI()
         {
-            return;
-            var target = serializedObject.targetObject as HotScriptAdapter;
-
-            EditorGUILayout.LabelField(ObjectNames.GetInspectorTitle(target));
-
-            var _class = EditorGUILayout.TextField("Target Class", target.targetClass);
-            if (_class != target.targetClass)
-            {
-                target.targetClass = _class;
-                EditorUtility.SetDirty(target);
-            }
-
-            // EditorGUILayout.PropertyField(serializedObject.FindProperty("cacheInfos"));
+            OnHeaderGUI();
 
             var prefabStage = PrefabStageUtility.GetCurrentPrefabStage();
             bool isEditorMode = prefabStage != null || !Application.isPlaying;
@@ -55,7 +61,9 @@ namespace HotUnity
             var type = hotAssembly.GetType(target.targetClass)?.ReflectionType;
             if (type == null)
             {
-                EditorGUILayout.HelpBox($"Type not found: {target.targetClass}", MessageType.Error);
+                target.targetClass = EditorGUILayout.TextField("Target Class", target.targetClass);
+                EditorGUILayout.HelpBox($"Target Class Not Found: {target.targetClass}, You can fix it manually.",
+                    MessageType.Error);
                 return;
             }
 
@@ -95,24 +103,9 @@ namespace HotUnity
             }
         }
 
-        private static string ToTitle(string name)
-        {
-            var sb = new StringBuilder();
-            sb.Append(char.ToUpper(name[0]));
-            for (int i = 1; i < name.Length; i++)
-            {
-                if (char.IsUpper(name[i]))
-                {
-                    sb.Append(' ');
-                }
-                sb.Append(name[i]);
-            }
-            return sb.ToString();
-        }
-
         private HotScriptAdapter.CacheInfo EditorDrawInfo(Type type, HotScriptAdapter.CacheInfo info)
         {
-            var title = ToTitle(info.fieldName);
+            var title = Helper.ToTitle(info.fieldName);
             if (info.typeName == typeof(string).FullName)
             {
                 info.stringValue = EditorGUILayout.TextField(title, info.stringValue);
@@ -129,7 +122,16 @@ namespace HotUnity
                 hotAssembly.GetType("HotUnity.HotScript").
                 ReflectionType.IsAssignableFrom(type))
             {
-                info.componentValue = (Component)EditorGUILayout.ObjectField(title, info.componentValue, typeof(HotScriptAdapter));
+                var tempComp = (Component)EditorGUILayout.ObjectField(title, info.componentValue, typeof(HotScriptAdapter));
+                if (tempComp != null && tempComp is HotScriptAdapter
+                    && ((HotScriptAdapter)tempComp).targetClass == type.FullName)
+                {
+                    info.componentValue = tempComp;
+                }
+                else
+                {
+                    info.componentValue = null;
+                }
             }
             return info;
         }
@@ -168,7 +170,7 @@ namespace HotUnity
 
         private void RuntimeDrawField(FieldInfo fieldInfo, object obj)
         {
-            var title = ToTitle(fieldInfo.Name);
+            var title = Helper.ToTitle(fieldInfo.Name);
             if (fieldInfo.FieldType.FullName == typeof(string).FullName)
             {
                 var value = EditorGUILayout.TextField(title, $"{fieldInfo.GetValue(obj)}");
@@ -182,40 +184,4 @@ namespace HotUnity
         }
     }
 
-    public class HotAssemblyLoader
-    {
-        private string path => Path.Combine(Application.streamingAssetsPath, "HotProject.dll");
-        public ILRuntime.Runtime.Enviorment.AppDomain appdomain;
-        MemoryStream fs;
-
-        public void Load()
-        {
-            appdomain = new ILRuntime.Runtime.Enviorment.AppDomain();
-            var bytes = File.ReadAllBytes(path);
-            fs = new MemoryStream(bytes);
-            try
-            {
-                appdomain.LoadAssembly(fs, null, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
-            }
-            catch
-            {
-                Debug.LogError("加载热更DLL失败");
-            }
-        }
-
-        public void Unload()
-        {
-            fs.Close();
-            appdomain = null;
-        }
-
-        public void Reloead()
-        {
-            if (appdomain != null)
-            {
-                Unload();
-            }
-            Load();
-        }
-    }
 }

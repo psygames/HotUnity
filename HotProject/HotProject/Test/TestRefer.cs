@@ -4,10 +4,12 @@ using UnityEngine.UI;
 
 namespace HotProject
 {
-    public class Test2 : HotScript
+    /// <summary>
+    /// 脚本引用测试
+    /// </summary>
+    public class TestRefer : HotScript
     {
-        public Test test;
-        public string test2Text;
+        public TestBasic test;
         public Image image;
         public Button button;
 
@@ -15,9 +17,7 @@ namespace HotProject
         {
             button.onClick.AddListener(() =>
             {
-                Debug.Log(test.testText);
                 Debug.Log(test.testVec3);
-                Debug.Log(test2Text);
                 image.color = Random.ColorHSV();
             });
         }
