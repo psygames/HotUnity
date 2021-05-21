@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace HotUnity.Editor
 {
-    [InitializeOnLoadAttribute]
-    public class FixAddScriptButtonEditor
+    [InitializeOnLoad]
+    public class FixAddScriptButton
     {
-        static FixAddScriptButtonEditor()
+        static FixAddScriptButton()
         {
             EditorApplication.hierarchyWindowItemOnGUI += HierarchyWindowItemOnGUI;
             Selection.selectionChanged += OnSelectionChanged;

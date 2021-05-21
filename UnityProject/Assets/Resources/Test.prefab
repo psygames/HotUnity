@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 3479655799002007851}
   - component: {fileID: 7604365188659884831}
   - component: {fileID: 1550526011755277691}
+  - component: {fileID: 1074195896740282542}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -199,6 +200,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1074195896740282542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7060482671582365992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 176d7da627249a5408814c66fde6ddcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8064450304098585727
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +223,7 @@ GameObject:
   - component: {fileID: 1037683787797942776}
   - component: {fileID: 7238677793919117003}
   - component: {fileID: 3642581602781590632}
-  - component: {fileID: 8114963186980429646}
+  - component: {fileID: 3675687587722284917}
   m_Layer: 0
   m_Name: Test
   m_TagString: Untagged
@@ -302,7 +315,7 @@ MonoBehaviour:
     vector3Value: {x: 0, y: 0, z: 0}
     stringValue: 
     componentValue: {fileID: 7238677793919117003}
---- !u!114 &8114963186980429646
+--- !u!114 &3675687587722284917
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

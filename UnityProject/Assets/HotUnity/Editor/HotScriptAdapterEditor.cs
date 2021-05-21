@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEditor;
@@ -98,42 +97,9 @@ namespace HotUnity.Editor
             {
                 foreach (var f in fields)
                 {
-                    RuntimeDrawField(f, target.targetObj);
+                    HotFieldGUI.RuntimeDrawField(f, target.targetObj);
                 }
             }
-        }
-
-        private HotScriptAdapter.CacheInfo EditorDrawInfo(Type type, HotScriptAdapter.CacheInfo info)
-        {
-            var title = Helper.ToTitle(info.fieldName);
-            if (info.typeName == typeof(string).FullName)
-            {
-                info.stringValue = EditorGUILayout.TextField(title, info.stringValue);
-            }
-            else if (info.typeName == typeof(Vector3).FullName)
-            {
-                info.vector3Value = EditorGUILayout.Vector3Field(title, info.vector3Value);
-            }
-            else if (type.IsClass && typeof(Component).IsAssignableFrom(type))
-            {
-                info.componentValue = (Component)EditorGUILayout.ObjectField(title, info.componentValue, type);
-            }
-            else if (type.IsClass &&
-                hotAssembly.GetType("HotUnity.HotScript").
-                ReflectionType.IsAssignableFrom(type))
-            {
-                var tempComp = (Component)EditorGUILayout.ObjectField(title, info.componentValue, typeof(HotScriptAdapter));
-                if (tempComp != null && tempComp is HotScriptAdapter
-                    && ((HotScriptAdapter)tempComp).targetClass == type.FullName)
-                {
-                    info.componentValue = tempComp;
-                }
-                else
-                {
-                    info.componentValue = null;
-                }
-            }
-            return info;
         }
 
         private bool EditorDrawField(FieldInfo fieldInfo, List<HotScriptAdapter.CacheInfo> infos)
@@ -158,7 +124,8 @@ namespace HotUnity.Editor
                 info = infos[index];
             }
 
-            info = EditorDrawInfo(fieldInfo.FieldType, info);
+            HotFieldGUI.hotScriptType = hotAssembly.GetType("HotUnity.HotScript").ReflectionType;
+            info = HotFieldGUI.EditorDrawField(fieldInfo.FieldType, info);
 
             if (!infos[index].Equals(info))
             {
@@ -167,21 +134,5 @@ namespace HotUnity.Editor
             }
             return false;
         }
-
-        private void RuntimeDrawField(FieldInfo fieldInfo, object obj)
-        {
-            var title = Helper.ToTitle(fieldInfo.Name);
-            if (fieldInfo.FieldType.FullName == typeof(string).FullName)
-            {
-                var value = EditorGUILayout.TextField(title, $"{fieldInfo.GetValue(obj)}");
-                fieldInfo.SetValue(obj, value);
-            }
-            else if (fieldInfo.FieldType.FullName == typeof(Vector3).FullName)
-            {
-                var value = EditorGUILayout.Vector3Field(title, (Vector3)fieldInfo.GetValue(obj));
-                fieldInfo.SetValue(obj, value);
-            }
-        }
     }
-
 }
