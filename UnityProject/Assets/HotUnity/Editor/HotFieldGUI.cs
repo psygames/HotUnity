@@ -11,6 +11,9 @@ namespace HotUnity.Editor
 
         public static HotScriptAdapter.CacheInfo EditorDrawField(Type type, HotScriptAdapter.CacheInfo info)
         {
+            /**
+             * string, bool, short, int, long, float, double, 
+             */
             var title = Helper.ToTitle(info.fieldName);
             if (info.typeName == typeof(string).FullName)
             {
@@ -22,13 +25,13 @@ namespace HotUnity.Editor
             }
             else if (type.IsClass && typeof(Component).IsAssignableFrom(type))
             {
-                info.componentValue = (Component)EditorGUILayout.ObjectField(title, info.componentValue, type);
+                info.componentValue = (Component)EditorGUILayout.ObjectField(title, info.componentValue, type, true);
             }
             else if (type.IsClass && hotScriptType.IsAssignableFrom(type))
             {
-                var tempComp = (Component)EditorGUILayout.ObjectField(title, info.componentValue, typeof(HotScriptAdapter));
-                if (tempComp != null && tempComp is HotScriptAdapter
-                    && ((HotScriptAdapter)tempComp).targetClass == type.FullName)
+                var tempComp = (HotScriptAdapter)EditorGUILayout.ObjectField(title,
+                    info.componentValue, typeof(HotScriptAdapter), true);
+                if (tempComp != null && (tempComp).targetClass == type.FullName)
                 {
                     info.componentValue = tempComp;
                 }

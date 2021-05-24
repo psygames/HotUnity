@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2208871440416432558}
   - component: {fileID: 6122346705257189045}
   - component: {fileID: 3154642046317467005}
-  - component: {fileID: 7277715309099585504}
+  - component: {fileID: 2435387432901263737}
   m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!114 &7277715309099585504
+--- !u!114 &2435387432901263737
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 1037683787797942776}
   - component: {fileID: 7238677793919117003}
   - component: {fileID: 3642581602781590632}
-  - component: {fileID: 3675687587722284917}
+  - component: {fileID: 7569051268861022667}
   m_Layer: 0
   m_Name: Test
   m_TagString: Untagged
@@ -249,7 +249,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7238677793919117003
@@ -265,10 +265,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetClass: HotProject.TestBasic
+  strings: []
+  bools: 
+  chars: 
+  shorts: 
+  ints: 
+  floats: []
+  doubles: []
+  enums: 
+  vector2s: []
+  vector2Ints: []
+  vector3s: []
+  vector3Ints: []
+  vector4s: []
+  quaternions: []
+  rects: []
+  rectInts: []
+  matrix4X4s: []
+  bounds: []
+  boundsInts: []
+  colors: []
+  color32s: []
+  components: []
+  adapters: []
   cacheInfos:
   - fieldName: testText
     typeName: System.String
-    intValue: 0
+    intValue: 2
     floatValue: 0
     vector3Value: {x: 0, y: 0, z: 0}
     stringValue: "\u54D4\u54E9\u54D4\u54E9 (\u309C-\u309C)\u3064\u30ED \u5E72\u676F~"
@@ -293,6 +316,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetClass: HotProject.TestRefer
+  strings: []
+  bools: 
+  chars: 
+  shorts: 
+  ints: 
+  floats: []
+  doubles: []
+  enums: 
+  vector2s: []
+  vector2Ints: []
+  vector3s: []
+  vector3Ints: []
+  vector4s: []
+  quaternions: []
+  rects: []
+  rectInts: []
+  matrix4X4s: []
+  bounds: []
+  boundsInts: []
+  colors: []
+  color32s: []
+  components: []
+  adapters: []
   cacheInfos:
   - fieldName: image
     typeName: UnityEngine.UI.Image
@@ -315,7 +361,7 @@ MonoBehaviour:
     vector3Value: {x: 0, y: 0, z: 0}
     stringValue: 
     componentValue: {fileID: 7238677793919117003}
---- !u!114 &3675687587722284917
+--- !u!114 &7569051268861022667
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

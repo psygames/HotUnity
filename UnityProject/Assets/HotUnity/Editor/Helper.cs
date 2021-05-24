@@ -13,6 +13,7 @@ namespace HotUnity.Editor
         {
             get
             {
+                _icon = null;
                 if (_icon == null)
                 {
                     _icon = GetBase64Texture(ICON_FIRE_COLORFUL);
@@ -28,8 +29,8 @@ namespace HotUnity.Editor
             return texture;
         }
 
-        static Color proColor = (Color)new Color32(56, 56, 56, 255);
-        static Color plebColor = (Color)new Color32(194, 194, 194, 255);
+        static Color proColor = new Color32(56, 56, 56, 255);
+        static Color plebColor = new Color32(194, 194, 194, 255);
 
         public static Color backgroudColor
         {
