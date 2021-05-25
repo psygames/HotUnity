@@ -36,7 +36,7 @@ namespace HotUnity.Editor
             // GUI.DrawTexture(rect, Helper.scriptIcon, ScaleMode.ScaleToFit);
             rect.yMax += 4;
             var _lastColor = GUI.skin.box.normal.textColor;
-            GUI.skin.box.normal.textColor = Color.green;
+            GUI.skin.box.normal.textColor = Helper.tipsFieldColor;
             GUI.Label(rect, "在这里添加热更脚本(Add HotScript Here)", GUI.skin.box);
             GUI.skin.box.normal.textColor = _lastColor;
         }

@@ -118,7 +118,7 @@ namespace HotUnity.Editor
                 this.groupButton.padding.left += 17;
                 this.previewText.padding.left += 3;
                 this.previewText.padding.right += 3;
-                ++this.previewHeader.padding.left;
+                this.previewHeader.padding.left += 1;
                 this.previewHeader.padding.right += 3;
                 this.previewHeader.padding.top += 3;
                 this.previewHeader.padding.bottom += 2;

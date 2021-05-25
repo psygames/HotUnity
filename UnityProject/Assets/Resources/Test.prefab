@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 1037683787797942776}
   - component: {fileID: 7238677793919117003}
   - component: {fileID: 7797289629776987491}
-  - component: {fileID: 8484911367476006512}
+  - component: {fileID: 6832781600152662495}
   m_Layer: 0
   m_Name: Test
   m_TagString: Untagged
@@ -675,7 +675,7 @@ MonoBehaviour:
     gameObjects: []
     components: []
     adapters: []
---- !u!114 &8484911367476006512
+--- !u!114 &6832781600152662495
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

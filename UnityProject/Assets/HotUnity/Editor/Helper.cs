@@ -41,13 +41,24 @@ namespace HotUnity.Editor
         }
 
         static Color objProColor = new Color32(76, 76, 76, 255);
-        static Color objPlebColor = new Color32(194, 194, 194, 255);
+        static Color objPlebColor = new Color32(211, 211, 211, 255);
 
         public static Color objFieldColor
         {
             get
             {
                 return EditorGUIUtility.isProSkin ? objProColor : objPlebColor;
+            }
+        }
+
+        static Color tipsProColor = new Color32(12, 242, 80, 255);
+        static Color tipsPlebColor = new Color32(252, 80, 12, 255);
+
+        public static Color tipsFieldColor
+        {
+            get
+            {
+                return EditorGUIUtility.isProSkin ? tipsProColor : tipsPlebColor;
             }
         }
 
