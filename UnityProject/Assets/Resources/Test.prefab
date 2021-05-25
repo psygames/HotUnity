@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2208871440416432558}
   - component: {fileID: 6122346705257189045}
   - component: {fileID: 3154642046317467005}
-  - component: {fileID: 2435387432901263737}
+  - component: {fileID: 5410231858426640528}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Image2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!114 &2435387432901263737
+--- !u!114 &5410231858426640528
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,8 +222,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1037683787797942776}
   - component: {fileID: 7238677793919117003}
-  - component: {fileID: 3642581602781590632}
-  - component: {fileID: 7569051268861022667}
+  - component: {fileID: 7797289629776987491}
+  - component: {fileID: 8484911367476006512}
   m_Layer: 0
   m_Name: Test
   m_TagString: Untagged
@@ -265,45 +265,166 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetClass: HotProject.TestBasic
-  strings: []
-  bools: 
-  chars: 
-  shorts: 
-  ints: 
-  floats: []
-  doubles: []
-  enums: 
-  vector2s: []
-  vector2Ints: []
-  vector3s: []
-  vector3Ints: []
-  vector4s: []
-  quaternions: []
-  rects: []
-  rectInts: []
-  matrix4X4s: []
-  bounds: []
-  boundsInts: []
-  colors: []
-  color32s: []
-  components: []
-  adapters: []
-  cacheInfos:
-  - fieldName: testText
-    typeName: System.String
-    intValue: 2
-    floatValue: 0
-    vector3Value: {x: 0, y: 0, z: 0}
-    stringValue: "\u54D4\u54E9\u54D4\u54E9 (\u309C-\u309C)\u3064\u30ED \u5E72\u676F~"
-    componentValue: {fileID: 0}
-  - fieldName: testVec3
-    typeName: UnityEngine.Vector3
-    intValue: 0
-    floatValue: 0
-    vector3Value: {x: 1, y: 2, z: 3}
-    stringValue: 
-    componentValue: {fileID: 0}
---- !u!114 &3642581602781590632
+  infos:
+  - _fieldName: testVec3
+    _fieldType: UnityEngine.Vector3
+    string_: 
+    bool_: 0
+    char_: 0
+    short_: 0
+    int_: 0
+    float_: 0
+    double_: 0
+    vector2_: {x: 0, y: 0}
+    vector2Int_: {x: 0, y: 0}
+    vector3_: {x: 1, y: 2, z: 3}
+    vector3Int_: {x: 0, y: 0, z: 0}
+    vector4_: {x: 0, y: 0, z: 0, w: 0}
+    quaternion_: {x: 0, y: 0, z: 0, w: 0}
+    rect_:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    rectInt_:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    matrix4X4_:
+      e00: 0
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 0
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 0
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 0
+    bound_:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    boundsInt_:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    color_: {r: 0, g: 0, b: 0, a: 0}
+    color32_:
+      serializedVersion: 2
+      rgba: 0
+    gameObject_: {fileID: 0}
+    component_: {fileID: 0}
+    adapter_: {fileID: 0}
+    strings: []
+    bools: 
+    chars: 
+    shorts: 
+    ints: 
+    floats: []
+    doubles: []
+    vector2s: []
+    vector2Ints: []
+    vector3s: []
+    vector3Ints: []
+    vector4s: []
+    quaternions: []
+    rects: []
+    rectInts: []
+    matrix4X4s: []
+    bounds: []
+    boundsInts: []
+    colors: []
+    color32s: []
+    gameObjects: []
+    components: []
+    adapters: []
+  - _fieldName: testText
+    _fieldType: System.String
+    string_: "\u54D4\u54E9\u54D4\u54E9\u5E72\u676F"
+    bool_: 0
+    char_: 0
+    short_: 0
+    int_: 0
+    float_: 0
+    double_: 0
+    vector2_: {x: 0, y: 0}
+    vector2Int_: {x: 0, y: 0}
+    vector3_: {x: 0, y: 0, z: 0}
+    vector3Int_: {x: 0, y: 0, z: 0}
+    vector4_: {x: 0, y: 0, z: 0, w: 0}
+    quaternion_: {x: 0, y: 0, z: 0, w: 0}
+    rect_:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    rectInt_:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    matrix4X4_:
+      e00: 0
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 0
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 0
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 0
+    bound_:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    boundsInt_:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    color_: {r: 0, g: 0, b: 0, a: 0}
+    color32_:
+      serializedVersion: 2
+      rgba: 0
+    gameObject_: {fileID: 0}
+    component_: {fileID: 0}
+    adapter_: {fileID: 0}
+    strings: []
+    bools: 
+    chars: 
+    shorts: 
+    ints: 
+    floats: []
+    doubles: []
+    vector2s: []
+    vector2Ints: []
+    vector3s: []
+    vector3Ints: []
+    vector4s: []
+    quaternions: []
+    rects: []
+    rectInts: []
+    matrix4X4s: []
+    bounds: []
+    boundsInts: []
+    colors: []
+    color32s: []
+    gameObjects: []
+    components: []
+    adapters: []
+--- !u!114 &7797289629776987491
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -316,52 +437,245 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetClass: HotProject.TestRefer
-  strings: []
-  bools: 
-  chars: 
-  shorts: 
-  ints: 
-  floats: []
-  doubles: []
-  enums: 
-  vector2s: []
-  vector2Ints: []
-  vector3s: []
-  vector3Ints: []
-  vector4s: []
-  quaternions: []
-  rects: []
-  rectInts: []
-  matrix4X4s: []
-  bounds: []
-  boundsInts: []
-  colors: []
-  color32s: []
-  components: []
-  adapters: []
-  cacheInfos:
-  - fieldName: image
-    typeName: UnityEngine.UI.Image
-    intValue: 0
-    floatValue: 0
-    vector3Value: {x: 0, y: 0, z: 0}
-    stringValue: 
-    componentValue: {fileID: 3154642046317467005}
-  - fieldName: button
-    typeName: UnityEngine.UI.Button
-    intValue: 0
-    floatValue: 0
-    vector3Value: {x: 0, y: 0, z: 0}
-    stringValue: 
-    componentValue: {fileID: 1550526011755277691}
-  - fieldName: test
-    typeName: HotProject.TestBasic
-    intValue: 0
-    floatValue: 0
-    vector3Value: {x: 0, y: 0, z: 0}
-    stringValue: 
-    componentValue: {fileID: 7238677793919117003}
---- !u!114 &7569051268861022667
+  infos:
+  - _fieldName: test
+    _fieldType: HotProject.TestBasic
+    string_: 
+    bool_: 0
+    char_: 0
+    short_: 0
+    int_: 0
+    float_: 0
+    double_: 0
+    vector2_: {x: 0, y: 0}
+    vector2Int_: {x: 0, y: 0}
+    vector3_: {x: 0, y: 0, z: 0}
+    vector3Int_: {x: 0, y: 0, z: 0}
+    vector4_: {x: 0, y: 0, z: 0, w: 0}
+    quaternion_: {x: 0, y: 0, z: 0, w: 0}
+    rect_:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    rectInt_:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    matrix4X4_:
+      e00: 0
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 0
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 0
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 0
+    bound_:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    boundsInt_:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    color_: {r: 0, g: 0, b: 0, a: 0}
+    color32_:
+      serializedVersion: 2
+      rgba: 0
+    gameObject_: {fileID: 0}
+    component_: {fileID: 0}
+    adapter_: {fileID: 7238677793919117003}
+    strings: []
+    bools: 
+    chars: 
+    shorts: 
+    ints: 
+    floats: []
+    doubles: []
+    vector2s: []
+    vector2Ints: []
+    vector3s: []
+    vector3Ints: []
+    vector4s: []
+    quaternions: []
+    rects: []
+    rectInts: []
+    matrix4X4s: []
+    bounds: []
+    boundsInts: []
+    colors: []
+    color32s: []
+    gameObjects: []
+    components: []
+    adapters: []
+  - _fieldName: image
+    _fieldType: UnityEngine.UI.Image
+    string_: 
+    bool_: 0
+    char_: 0
+    short_: 0
+    int_: 0
+    float_: 0
+    double_: 0
+    vector2_: {x: 0, y: 0}
+    vector2Int_: {x: 0, y: 0}
+    vector3_: {x: 0, y: 0, z: 0}
+    vector3Int_: {x: 0, y: 0, z: 0}
+    vector4_: {x: 0, y: 0, z: 0, w: 0}
+    quaternion_: {x: 0, y: 0, z: 0, w: 0}
+    rect_:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    rectInt_:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    matrix4X4_:
+      e00: 0
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 0
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 0
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 0
+    bound_:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    boundsInt_:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    color_: {r: 0, g: 0, b: 0, a: 0}
+    color32_:
+      serializedVersion: 2
+      rgba: 0
+    gameObject_: {fileID: 0}
+    component_: {fileID: 3154642046317467005}
+    adapter_: {fileID: 0}
+    strings: []
+    bools: 
+    chars: 
+    shorts: 
+    ints: 
+    floats: []
+    doubles: []
+    vector2s: []
+    vector2Ints: []
+    vector3s: []
+    vector3Ints: []
+    vector4s: []
+    quaternions: []
+    rects: []
+    rectInts: []
+    matrix4X4s: []
+    bounds: []
+    boundsInts: []
+    colors: []
+    color32s: []
+    gameObjects: []
+    components: []
+    adapters: []
+  - _fieldName: button
+    _fieldType: UnityEngine.UI.Button
+    string_: 
+    bool_: 0
+    char_: 0
+    short_: 0
+    int_: 0
+    float_: 0
+    double_: 0
+    vector2_: {x: 0, y: 0}
+    vector2Int_: {x: 0, y: 0}
+    vector3_: {x: 0, y: 0, z: 0}
+    vector3Int_: {x: 0, y: 0, z: 0}
+    vector4_: {x: 0, y: 0, z: 0, w: 0}
+    quaternion_: {x: 0, y: 0, z: 0, w: 0}
+    rect_:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    rectInt_:
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    matrix4X4_:
+      e00: 0
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 0
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 0
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 0
+    bound_:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+    boundsInt_:
+      m_Position: {x: 0, y: 0, z: 0}
+      m_Size: {x: 0, y: 0, z: 0}
+    color_: {r: 0, g: 0, b: 0, a: 0}
+    color32_:
+      serializedVersion: 2
+      rgba: 0
+    gameObject_: {fileID: 0}
+    component_: {fileID: 1550526011755277691}
+    adapter_: {fileID: 0}
+    strings: []
+    bools: 
+    chars: 
+    shorts: 
+    ints: 
+    floats: []
+    doubles: []
+    vector2s: []
+    vector2Ints: []
+    vector3s: []
+    vector3Ints: []
+    vector4s: []
+    quaternions: []
+    rects: []
+    rectInts: []
+    matrix4X4s: []
+    bounds: []
+    boundsInts: []
+    colors: []
+    color32s: []
+    gameObjects: []
+    components: []
+    adapters: []
+--- !u!114 &8484911367476006512
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

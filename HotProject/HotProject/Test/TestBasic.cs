@@ -12,6 +12,7 @@ namespace HotProject
         public Vector3 testVec3;
         public override void Awake()
         {
+            Debug.Log(name);
             Debug.Log(testText);
         }
     }

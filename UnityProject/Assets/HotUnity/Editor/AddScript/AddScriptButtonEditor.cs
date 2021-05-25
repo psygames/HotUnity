@@ -86,7 +86,8 @@ namespace HotUnity.Editor
             foreach (var kv in hotAssembly.LoadedTypes)
             {
                 if (kv.Key == baseTypeName) continue;
-                if (!string.IsNullOrEmpty(search) && !kv.Key.Contains(search)) continue;
+                if (!string.IsNullOrEmpty(search)
+                    && !kv.Key.ToLower().Contains(search.ToLower())) continue;
                 var type = kv.Value.ReflectionType;
                 if (type.IsClass && baseType.IsAssignableFrom(type))
                 {

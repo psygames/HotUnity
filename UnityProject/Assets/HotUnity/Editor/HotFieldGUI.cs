@@ -9,11 +9,10 @@ namespace HotUnity.Editor
     {
         public static Type hotScriptType;
 
-        public static HotScriptAdapter.CacheInfo EditorDrawField(Type type, HotScriptAdapter.CacheInfo info)
+        public static HotScriptAdapter.HotInfo EditorDrawField(Type type, HotScriptAdapter.HotInfo info)
         {
-            /**
-             * string, bool, short, int, long, float, double, 
-             */
+
+            /*
             var title = Helper.ToTitle(info.fieldName);
             if (info.typeName == typeof(string).FullName)
             {
@@ -40,6 +39,7 @@ namespace HotUnity.Editor
                     info.componentValue = null;
                 }
             }
+            */
             return info;
         }
 
