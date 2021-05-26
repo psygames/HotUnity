@@ -1,5 +1,6 @@
 # HotUnity
 基于 ILRuntime 实现使用 Unity **脚本方式** 的热更新脚本。
+>> [点击加入技术交流群](https://jq.qq.com/?_wv=1027&k=jWnRWiXf)
 
 ### 目的：
 - 在热更项目中，HotScript 定义为热更脚本，所有继承该脚本的类，都可以以 Unity 脚本的方式添加到 GameObject 上并通过 Editor 显示、编辑、引用等，这样极大方便了热更项目的脚本使用。
