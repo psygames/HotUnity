@@ -10,40 +10,15 @@ namespace HotUnity
 
         public HotInfo[] infos;
 
-        private void Awake()
-        {
-            InvokeMethod(nameof(Awake));
-        }
-
-        private void Start()
-        {
-            InvokeMethod(nameof(Start));
-        }
-
-        private void Update()
-        {
-            InvokeMethod(nameof(Update));
-        }
-
-        private void LateUpdate()
-        {
-            InvokeMethod(nameof(LateUpdate));
-        }
-
-        private void FixedUpdate()
-        {
-            InvokeMethod(nameof(FixedUpdate));
-        }
-
-        private void OnGUI()
-        {
-            InvokeMethod(nameof(OnGUI));
-        }
-
-        private void OnDestroy()
-        {
-            InvokeMethod(nameof(OnDestroy));
-        }
+        private void Awake() { InvokeMethod(nameof(Awake)); }
+        private void Start() { InvokeMethod(nameof(Start)); }
+        private void OnEnable() { InvokeMethod(nameof(OnEnable)); }
+        private void Update() { InvokeMethod(nameof(Update)); }
+        private void LateUpdate() { InvokeMethod(nameof(LateUpdate)); }
+        private void FixedUpdate() { InvokeMethod(nameof(FixedUpdate)); }
+        private void OnGUI() { InvokeMethod(nameof(OnGUI)); }
+        private void OnDisable() { InvokeMethod(nameof(OnDisable)); }
+        private void OnDestroy() { InvokeMethod(nameof(OnDestroy)); }
 
         private void InvokeMethod(string name)
         {

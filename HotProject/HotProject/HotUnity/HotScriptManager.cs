@@ -100,6 +100,11 @@ namespace HotUnity
             behaviour.Awake();
         }
 
+        public static void OnEnable(HotScriptAdapter adapter)
+        {
+            ins.hotScripts[adapter].OnEnable();
+        }
+
         public static void Start(HotScriptAdapter adapter)
         {
             ins.hotScripts[adapter].Start();
@@ -123,6 +128,11 @@ namespace HotUnity
         public static void OnGUI(HotScriptAdapter adapter)
         {
             ins.hotScripts[adapter].OnGUI();
+        }
+
+        public static void OnDisable(HotScriptAdapter adapter)
+        {
+            ins.hotScripts[adapter].OnDisable();
         }
 
         public static void OnDestroy(HotScriptAdapter adapter)
