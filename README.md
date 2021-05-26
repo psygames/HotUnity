@@ -10,6 +10,7 @@
 - 打开HotProject项目，新建类并继承HotScript，添加一些成员变量，例如string，Vector3，Image等等。
 - 在Unity编辑器中，打开Test.prefab，点击 [Add HotScript] 按钮，添加新建的脚本，并修改一些变量值。
 - 运行项目，在新建脚本中使用Debug.Log输出成员变量值即可。
+
 ### 已实现功能：
 - [x] 热更脚本的Editor下编辑。
 - [x] 支持绝大多数基础类型。
