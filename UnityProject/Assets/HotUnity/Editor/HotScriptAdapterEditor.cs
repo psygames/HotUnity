@@ -83,7 +83,22 @@ namespace HotUnity.Editor
         {
             foreach (var f in fields)
             {
-                HotFieldGUI.RuntimeDrawField(f, target.targetObj);
+                RuntimeDrawField(f, target.targetObj);
+            }
+        }
+
+        private void RuntimeDrawField(FieldInfo fieldInfo, object obj)
+        {
+            var title = Helper.ToTitle(fieldInfo.Name);
+            if (fieldInfo.FieldType.FullName == typeof(string).FullName)
+            {
+                var value = EditorGUILayout.TextField(title, $"{fieldInfo.GetValue(obj)}");
+                fieldInfo.SetValue(obj, value);
+            }
+            else if (fieldInfo.FieldType.FullName == typeof(Vector3).FullName)
+            {
+                var value = EditorGUILayout.Vector3Field(title, (Vector3)fieldInfo.GetValue(obj));
+                fieldInfo.SetValue(obj, value);
             }
         }
 
