@@ -76,5 +76,20 @@ namespace HotUnity.Editor
             }
             return sb.ToString();
         }
+
+        public static ILRuntime.Runtime.Enviorment.AppDomain hotAssembly => assemblyLoader.appdomain;
+        private static HotAssemblyLoader _assemblyLoader;
+        public static HotAssemblyLoader assemblyLoader
+        {
+            get
+            {
+                if (_assemblyLoader == null)
+                {
+                    _assemblyLoader = new HotAssemblyLoader();
+                    _assemblyLoader.Reloead();
+                }
+                return _assemblyLoader;
+            }
+        }
     }
 }

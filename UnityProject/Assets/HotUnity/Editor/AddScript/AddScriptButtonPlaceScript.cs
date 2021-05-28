@@ -4,11 +4,10 @@ using UnityEngine;
 namespace HotUnity.Editor
 {
     [InitializeOnLoad]
-    public class FixAddScriptButton
+    public class AddScriptButtonPlaceScript
     {
-        static FixAddScriptButton()
+        static AddScriptButtonPlaceScript()
         {
-            EditorApplication.hierarchyWindowItemOnGUI += HierarchyWindowItemOnGUI;
             Selection.selectionChanged += OnSelectionChanged;
         }
 
@@ -30,16 +29,6 @@ namespace HotUnity.Editor
                 {
                     GameObject.DestroyImmediate(addScriptTool);
                 }
-            }
-        }
-
-        static void HierarchyWindowItemOnGUI(int instanceId, Rect selectionRect)
-        {
-            GameObject gameObject = EditorUtility.InstanceIDToObject(instanceId) as GameObject;
-            if (gameObject && gameObject.GetComponent<HotScriptAdapter>() != null)
-            {
-                Rect rect = new Rect(selectionRect.x + selectionRect.width - 16f, selectionRect.y, 16f, 16f);
-                GUI.DrawTexture(rect, Helper.scriptIcon);
             }
         }
     }

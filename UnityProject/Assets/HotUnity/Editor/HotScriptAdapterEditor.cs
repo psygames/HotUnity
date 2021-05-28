@@ -11,19 +11,11 @@ namespace HotUnity.Editor
     [CustomEditor(typeof(HotScriptAdapter))]
     public class HotScriptAdapterEditor : UnityEditor.Editor
     {
-        private ILRuntime.Runtime.Enviorment.AppDomain hotAssembly => assemblyLoader.appdomain;
-        private HotAssemblyLoader assemblyLoader;
         private new HotScriptAdapter target => serializedObject.targetObject as HotScriptAdapter;
 
         private void OnEnable()
         {
-            assemblyLoader = assemblyLoader ?? new HotAssemblyLoader();
-            assemblyLoader.Reloead();
-        }
-
-        private void OnDisable()
-        {
-            assemblyLoader?.Unload();
+            Helper.assemblyLoader.Reloead();
         }
 
         protected override void OnHeaderGUI()
@@ -31,16 +23,20 @@ namespace HotUnity.Editor
             var rect = EditorGUILayout.GetControlRect(false, 0f);
             rect.height = EditorGUIUtility.singleLineHeight;
             rect.y -= rect.height;
-
+            int xOffset = 0;
+#if UNITY_2019_1_OR_NEWER
+            rect.y -= 6;
+            xOffset = 3;
+#endif
             // icon
-            rect.x = 16;
-            rect.xMax = 32;
+            rect.x = 16 + xOffset;
+            rect.xMax = 32 + xOffset;
             EditorGUI.DrawRect(rect, Helper.backgroudColor);
             GUI.DrawTexture(rect, Helper.scriptIcon);
 
             // title
-            rect.x = 48;
-            rect.xMax = EditorGUIUtility.currentViewWidth - 96;
+            rect.x = 48 + xOffset * 4;
+            rect.xMax = EditorGUIUtility.currentViewWidth - 96 + xOffset * 4;
             EditorGUI.DrawRect(rect, Helper.backgroudColor);
             var className = target.targetClass;
             if (className.LastIndexOf('.') != -1)
@@ -58,7 +54,7 @@ namespace HotUnity.Editor
             var prefabStage = PrefabStageUtility.GetCurrentPrefabStage();
             bool isEditorMode = prefabStage != null || !Application.isPlaying;
 
-            var type = hotAssembly.GetType(target.targetClass)?.ReflectionType;
+            var type = Helper.hotAssembly.GetType(target.targetClass)?.ReflectionType;
             if (type == null)
             {
                 target.targetClass = EditorGUILayout.TextField("Target Class", target.targetClass);
@@ -83,7 +79,22 @@ namespace HotUnity.Editor
         {
             foreach (var f in fields)
             {
-                HotFieldGUI.RuntimeDrawField(f, target.targetObj);
+                RuntimeDrawField(f, target.targetObj);
+            }
+        }
+
+        private void RuntimeDrawField(FieldInfo fieldInfo, object obj)
+        {
+            var title = Helper.ToTitle(fieldInfo.Name);
+            if (fieldInfo.FieldType.FullName == typeof(string).FullName)
+            {
+                var value = EditorGUILayout.TextField(title, $"{fieldInfo.GetValue(obj)}");
+                fieldInfo.SetValue(obj, value);
+            }
+            else if (fieldInfo.FieldType.FullName == typeof(Vector3).FullName)
+            {
+                var value = EditorGUILayout.Vector3Field(title, (Vector3)fieldInfo.GetValue(obj));
+                fieldInfo.SetValue(obj, value);
             }
         }
 
@@ -214,7 +225,7 @@ namespace HotUnity.Editor
         private bool EditorDrawField(FieldInfo field, int fieldIndex)
         {
             EditorGUI.BeginChangeCheck();
-            var hotScriptType = hotAssembly.GetType("HotUnity.HotScript").ReflectionType;
+            var hotScriptType = Helper.hotAssembly.GetType("HotUnity.HotScript").ReflectionType;
             var info = target.infos[fieldIndex];
             bool isSerializedProperty = false;
 

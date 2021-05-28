@@ -8,25 +8,21 @@ namespace HotUnity.Editor
     [CustomEditor(typeof(AddScriptButton))]
     public class AddScriptButtonEditor : UnityEditor.Editor
     {
-        private ILRuntime.Runtime.Enviorment.AppDomain hotAssembly => assemblyLoader.appdomain;
-        private HotAssemblyLoader assemblyLoader;
         private new AddScriptButton target => serializedObject.targetObject as AddScriptButton;
 
         private void OnEnable()
         {
-            assemblyLoader = assemblyLoader ?? new HotAssemblyLoader();
-            assemblyLoader.Reloead();
-        }
-
-        private void OnDisable()
-        {
-            assemblyLoader?.Unload();
+            Helper.assemblyLoader.Reloead();
         }
 
         protected override void OnHeaderGUI()
         {
-            var rect = EditorGUILayout.GetControlRect(false, 0f);
-            topRect = rect;
+            topRect = EditorGUILayout.GetControlRect(false, 0f);
+#if UNITY_2019_1_OR_NEWER
+            topRect.y -= 7;
+            topRect.x -= 2;
+#endif
+            var rect = topRect;
             rect.height = EditorGUIUtility.singleLineHeight;
             rect.y -= rect.height;
             rect.xMin -= 16;
@@ -67,7 +63,7 @@ namespace HotUnity.Editor
             rect.y += 8;
             if (EditorGUI.DropdownButton(rect, content, FocusType.Passive, "AC Button"))
             {
-                assemblyLoader?.Reloead();
+                Helper.assemblyLoader?.Reloead();
                 AddScriptWindow.Show(rect, OnAddScript, OnFilterScript);
             }
         }
@@ -81,9 +77,9 @@ namespace HotUnity.Editor
         private string[] OnFilterScript(string search)
         {
             var baseTypeName = "HotUnity.HotScript";
-            var baseType = hotAssembly.GetType(baseTypeName).ReflectionType;
+            var baseType = Helper.hotAssembly.GetType(baseTypeName).ReflectionType;
             var list = new List<string>();
-            foreach (var kv in hotAssembly.LoadedTypes)
+            foreach (var kv in Helper.hotAssembly.LoadedTypes)
             {
                 if (kv.Key == baseTypeName) continue;
                 if (!string.IsNullOrEmpty(search)
