@@ -22,8 +22,6 @@ namespace HotUnity.Editor
             }
         }
 
-        public static Color splitLineColor = new Color32(89, 89, 89, 255);
-
         private static Texture2D GetBase64Texture(string base64Str)
         {
             var texture = new Texture2D(0, 0);
@@ -77,21 +75,6 @@ namespace HotUnity.Editor
                 sb.Append(name[i]);
             }
             return sb.ToString();
-        }
-
-        public static ILRuntime.Runtime.Enviorment.AppDomain hotAssembly => assemblyLoader.appdomain;
-        private static HotAssemblyLoader _assemblyLoader;
-        public static HotAssemblyLoader assemblyLoader
-        {
-            get
-            {
-                if (_assemblyLoader == null)
-                {
-                    _assemblyLoader = new HotAssemblyLoader();
-                    _assemblyLoader.Reloead();
-                }
-                return _assemblyLoader;
-            }
         }
     }
 }
